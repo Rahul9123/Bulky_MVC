@@ -13,6 +13,12 @@ namespace BulkyBook.DataAccess.Data
         }
         public DbSet<Category> Categories { get; set; } 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Company> Companies { get; set; } 
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -22,6 +28,39 @@ namespace BulkyBook.DataAccess.Data
                 new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "Hoistory", DisplayOrder = 3 }
                 );
+            modelBuilder.Entity<Company>().HasData(
+                new Company 
+                { 
+                    Id = 1,
+                    Name = "Tech Solution",
+                    StreetAddress = "New Colony",
+                    City = "Kalyan",
+                    State = "Maharashtra",
+                    PostalCode = "123456",
+                    PhoneNumber = "123654789"
+                },
+                new Company
+                {
+                    Id = 2,
+                    Name = "Rahul Book",
+                    StreetAddress = "New Industrial Area",
+                    City = "Kalyan",
+                    State = "Maharashtra",
+                    PostalCode = "156456",
+                    PhoneNumber = "3654789"
+                },
+                new Company
+                {
+                    Id = 3,
+                    Name = "InfoTech Solution",
+                    StreetAddress = "123 Kalyan East",
+                    City = "Kalyan",
+                    State = "Maharashtra",
+                    PostalCode = "415456",
+                    PhoneNumber = "1235648"
+                }
+                );
+
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
@@ -34,8 +73,7 @@ namespace BulkyBook.DataAccess.Data
                     Price = 90,
                     Price50 = 85,
                     Price100 = 80,
-                    CategoryId = 1,
-                    ImageUrl=""
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -48,8 +86,7 @@ namespace BulkyBook.DataAccess.Data
                     Price = 30,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 1,
-                    ImageUrl = ""
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -62,8 +99,7 @@ namespace BulkyBook.DataAccess.Data
                     Price = 50,
                     Price50 = 40,
                     Price100 = 35,
-                    CategoryId = 1,
-                    ImageUrl = ""
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -76,8 +112,7 @@ namespace BulkyBook.DataAccess.Data
                     Price = 65,
                     Price50 = 60,
                     Price100 = 55,
-                    CategoryId = 2,
-                    ImageUrl = ""
+                    CategoryId = 2
                 },
                 new Product
                 {
@@ -90,8 +125,7 @@ namespace BulkyBook.DataAccess.Data
                     Price = 27,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 2,
-                    ImageUrl = ""
+                    CategoryId = 2
                 },
                 new Product
                 {
@@ -104,8 +138,7 @@ namespace BulkyBook.DataAccess.Data
                     Price = 23,
                     Price50 = 22,
                     Price100 = 20, 
-                    CategoryId = 3,
-                    ImageUrl = ""
+                    CategoryId = 3
                 }
                 );
         }
